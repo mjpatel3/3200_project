@@ -1,5 +1,5 @@
 /**
-*@author: Manthan Patel (mjpatel3)
+*@author: Manthan Patel (mpatel99)
 *server.java
 *purpose of this class is to be the server for clients to connect to and
 *send and receive messges to encrypt and decrypt

@@ -1,5 +1,5 @@
 /*
-*@author: Manthan Patel (mjpatel3)
+*@author: Manthan Patel ((mpatel99)
 *Client.java
 *purpose of this class is to be the client for users to be, and connect to server
 *after it connects it tells server how to update user listening
