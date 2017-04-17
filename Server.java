@@ -19,6 +19,8 @@ import java.security.KeyFactory;
 import java.security.spec.X509EncodedKeySpec;
 import java.security.GeneralSecurityException;
 import javax.xml.bind.DatatypeConverter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /** A server that keeps up with a public key for every user, along with a current
     value for every user (whether or not they are connected.) */
@@ -26,6 +28,10 @@ public class Server {
   /** Port number used by the server */
   public static final int PORT_NUMBER = 26126;
 
+  public boolean ifManager = false;
+  public String  timeServerStarts = null;
+
+  public String timeStamp = null;
   /** Record for an individual user. */
   private static class UserRec {
     // Name of this user.
@@ -103,6 +109,11 @@ public class Server {
 
       // Get the username.
       String username = input.readUTF();
+      if(username.equals("alex")){
+        ifManager = true;
+      }else{
+        ifManager = false;
+      }
 
       // Make a random sequence of bytes to use as a challenge string.
       Random rand = new Random();
@@ -118,8 +129,15 @@ public class Server {
       // changes.
       UserRec rec = null;
       for ( int i = 0; rec == null && i < userList.size(); i++ )
-        if ( userList.get( i ).name.equals( username ) )
+        if ( userList.get( i ).name.equals( username ) ){
           rec = userList.get( i );
+          //gets time stamp for when the user logs in
+          timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
+          .format(Calendar.getInstance().getTime());
+        }
+//Checks to see who is logged in and if alex, sets manager to yes
+        System.out.println(username);
+
 
       // Did we find a record for this user?
       if ( rec != null ) {
@@ -176,9 +194,9 @@ public class Server {
 
 
 // if report command
-          } else if(cmd.equals("report")){
+          } else if(cmd.equals("report") && ifManager == true){
             for(int i = 0; i < userList.size(); i++){
-              reply.append(userList.get(i).name + ": " + userList.get(i).status + "\n");
+              reply.append(userList.get(i).name + ": " + userList.get(i).status + " Time: " + timeStamp + "\n");
             }
             // if command is invalid
           } else{
@@ -265,6 +283,8 @@ public class Server {
   public static void main( String[] args ) {
     // Make a server object, so we can have non-static fields.
     Server server = new Server();
+    // timeServerStarts = new SimpleDateFormat("yyyyMMdd_HHmmss")
+    // .format(Calendar.getInstance().getTime());
     server.run( args );
   }
 }
