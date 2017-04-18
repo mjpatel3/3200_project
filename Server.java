@@ -185,10 +185,11 @@ public class Server {
         while ( ! cmd.equals( "done" ) ) {
           StringBuilder reply = new StringBuilder();
 // if status command
-          if(cmd.equals("set") || requestScanner.hasNext()){
+          if(cmd.equals("status") || requestScanner.hasNext()){
             reply.append( rec.status + " -> " );
 
             String status = requestScanner.nextLine().trim();
+            System.out.println(status);
             rec.status = status;
             reply.append( status + "\n" );//
 

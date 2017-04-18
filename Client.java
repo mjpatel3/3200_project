@@ -18,7 +18,44 @@ import java.security.GeneralSecurityException;
 import javax.xml.bind.DatatypeConverter;
 
 /** Client supporting simple interactionw with the server. */
+
 public class Client {
+
+  public static String request = "";
+
+  public static boolean checkStatusOptions(String input){
+      input = input.toLowerCase();
+      if(input.equals("working")){
+        request = "status Working";
+        return true;
+      }else if( input.equals("off")){
+        request = "status off";
+        return true;
+      }else if(input.equals("break")){
+        request = "status break";
+        return true;
+      }
+
+
+    return false;
+  }
+
+  public static void statusMenu(){
+    System.out.println("Please choose your status accordingly: ");
+    System.out.println("   working");
+    System.out.println("   off");
+    System.out.println("   break");
+
+  }
+
+  public static void mainMenu(){
+    System.out.println("");
+    System.out.println("Welcome to your Employee Portal");
+    System.out.println("please choose one of the flowing commands");
+    System.out.println("    status");
+    System.out.println("    report");
+    System.out.println("    done" );
+  }
   public static void main( String[] args ) {
     // Complain if we don't get the right number of arguments.
     if ( args.length != 1 ) {
@@ -90,15 +127,29 @@ public class Client {
 
 
       // Read commands from the user and print server responses.
-      String request = "";
+      // String request = "";
+      mainMenu();
+
       System.out.print( "cmd> " );
-      while ( scanner.hasNextLine() && ! ( request = scanner.nextLine() ).equals( "done" ) ) {
+      while ( scanner.hasNextLine() && ! ( request = scanner.next() ).equals( "done" ) ) {
+        request = request.toLowerCase();
+
+        if(request.equals("status")){
+          statusMenu();
+          request = scanner.next();
+          if(!checkStatusOptions(request)){
+             request = "invd";
+          }
+        }
+
+
+
         Server.putMessage( output, AESEncrypter.doFinal(request.getBytes() ));
 
         // Read and print the response.
         String response = new String( AESDecrypter.doFinal(Server.getMessage( input )) );
         System.out.print( response );
-
+        mainMenu();
         System.out.print( "cmd> " );
       }
 
