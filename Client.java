@@ -86,9 +86,14 @@ public class Client {
         output.flush();
 
         go = input.readInt();
-        System.out.println("Go is " + go);
+        // System.out.println("Go is " + go);
         count++;
       } while(go != 1 && count < 2);
+
+      if( go == 0){
+        sock.close();
+        System.exit(-1);
+      }
 
       count = 0;
       do{
@@ -100,11 +105,15 @@ public class Client {
         output.flush();
 
         go = input.readInt();
-        System.out.println("Go is " + go);
+        // System.out.println("Go is " + go);
 
         count++;
       } while(go != 1 && count < 2);
 
+      if( go == 0){
+        sock.close();
+        System.exit(-1);
+      }
 
       // Try to read the user's private key.
       Scanner keyScanner = new Scanner( new File( name + ".txt" ) );

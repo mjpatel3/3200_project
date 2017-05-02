@@ -167,10 +167,13 @@ public class Server {
       while(offensesPassword < 2 && accepted != 1){
 
          String pass = input.readUTF();
+         //System.out.println("********************** " + pass );
 
          if (pass.equals("pass")){
             accepted = 1;
          }
+
+         //System.out.println("()()()())()( )" + offensesPassword);
 
          output.writeInt(accepted);
          output.flush();

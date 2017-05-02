@@ -9,221 +9,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
 <record>
-  <date>2017-05-01T23:53:32</date>
-  <millis>1493697212361</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-01T23:54:18</date>
-  <millis>1493697258079</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-01T23:54:46</date>
-  <millis>1493697286464</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-01T23:55:09</date>
-  <millis>1493697309590</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-01T23:57:33</date>
-  <millis>1493697453509</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-01T23:58:18</date>
-  <millis>1493697498802</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T00:00:36</date>
-  <millis>1493697636150</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T00:03:47</date>
-  <millis>1493697827158</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T00:05:14</date>
-  <millis>1493697914042</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: alex Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T01:14:02</date>
-  <millis>1493702042146</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T01:17:00</date>
-  <millis>1493702220026</millis>
-  <sequence>0</sequence>
-  <logger>Server</logger>
-  <level>INFO</level>
-  <class>Server</class>
-  <method>handleClient</method>
-  <thread>10</thread>
-  <message>Username: donald Password attempts exceeded.
-</message>
-</record>
-</log>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE log SYSTEM "logger.dtd">
-<log>
-<record>
-  <date>2017-05-02T13:49:51</date>
-  <millis>1493747391411</millis>
+  <date>2017-05-02T19:37:08</date>
+  <millis>1493768228177</millis>
   <sequence>0</sequence>
   <logger>Server</logger>
   <level>INFO</level>
@@ -238,14 +26,66 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2017-05-02T13:51:30</date>
-  <millis>1493747490806</millis>
+  <date>2017-05-02T19:37:35</date>
+  <millis>1493768255673</millis>
   <sequence>0</sequence>
   <logger>Server</logger>
   <level>INFO</level>
   <class>Server</class>
   <method>handleClient</method>
-  <thread>10</thread>
+  <thread>11</thread>
+  <message>Failed username login attempts. Thread is IP.
+</message>
+</record>
+<record>
+  <date>2017-05-02T19:37:48</date>
+  <millis>1493768268226</millis>
+  <sequence>1</sequence>
+  <logger>Server</logger>
+  <level>INFO</level>
+  <class>Server</class>
+  <method>handleClient</method>
+  <thread>12</thread>
+  <message>Username: donald Permission violation.
+</message>
+</record>
+<record>
+  <date>2017-05-02T19:37:50</date>
+  <millis>1493768270673</millis>
+  <sequence>2</sequence>
+  <logger>Server</logger>
+  <level>INFO</level>
+  <class>Server</class>
+  <method>handleClient</method>
+  <thread>12</thread>
+  <message>Username: donald Permission violation.
+</message>
+</record>
+<record>
+  <date>2017-05-02T19:37:52</date>
+  <millis>1493768272906</millis>
+  <sequence>3</sequence>
+  <logger>Server</logger>
+  <level>INFO</level>
+  <class>Server</class>
+  <method>handleClient</method>
+  <thread>12</thread>
+  <message>Username: donald Permission violation.
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2017-05-02T19:39:07</date>
+  <millis>1493768347519</millis>
+  <sequence>0</sequence>
+  <logger>Server</logger>
+  <level>INFO</level>
+  <class>Server</class>
+  <method>handleClient</method>
+  <thread>11</thread>
   <message>Username: alex Password attempts exceeded.
 </message>
 </record>
