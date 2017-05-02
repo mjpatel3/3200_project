@@ -7,10 +7,9 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
+import java.util.logging.Logger;
+import java.util.logging.FileHandler;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,18 +19,28 @@ import java.security.spec.X509EncodedKeySpec;
 import java.security.GeneralSecurityException;
 import javax.xml.bind.DatatypeConverter;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 
 /** A server that keeps up with a public key for every user, along with a current
     value for every user (whether or not they are connected.) */
 public class Server {
   /** Port number used by the server */
   public static final int PORT_NUMBER = 26126;
+  public static String password = "pass";
 
   public boolean ifManager = false;
   public String  timeServerStarts = null;
 
   public String timeStamp = null;
+
+  public static Logger ruleLogs = Logger.getLogger(Server.class.getName());
+
+  public static FileHandler fileHandle;
+
+  public int offensesName = 0;
+  public int offensesPassword = 0;
+
+
   /** Record for an individual user. */
   private static class UserRec {
     // Name of this user.
@@ -42,6 +51,9 @@ public class Server {
 
     // Current status of this user, defaults to unknown.
     String status = "unknown";
+
+    // Count number of offenses
+    int offenseCount = 0;
   }
 
   /** List of all the user records. */
@@ -98,6 +110,8 @@ public class Server {
     output.flush();
   }
 
+    UserRec rec;
+
   /** Function to handle interaction with a client.  Really, this should be
       run in a thread. */
   public void handleClient( Socket sock ) {
@@ -107,13 +121,71 @@ public class Server {
       DataOutputStream output = new DataOutputStream( sock.getOutputStream() );
       DataInputStream input = new DataInputStream( sock.getInputStream() );
 
-      // Get the username.
-      String username = input.readUTF();
-      if(username.equals("alex")){
-        ifManager = true;
-      }else{
-        ifManager = false;
+      int accepted = 0;
+      String uName;
+      //  UserRec rec;
+      do{
+        // Get the username.
+        String username = input.readUTF();
+        uName = username;
+        if(username.equals("alex")){
+          ifManager = true;
+        }else{
+          ifManager = false;
+        }
+
+        // Find this user.  We don't need to synchronize here, sinc the set of users never
+        // changes.
+        rec = null;
+        for ( int i = 0; rec == null && i < userList.size(); i++ ){
+          if ( userList.get( i ).name.equals( username ) ){
+            rec = userList.get( i );
+            accepted = 1;
+            break;
+            //gets time stamp for when the user logs i
+          }
+        }
+        output.writeInt(accepted);
+        System.out.println("Server Boolean " + accepted);
+        output.flush();
+
+        offensesName++;
+        System.out.println("Offenses are " + offensesName);
+          //Checks to see who is logged in and if alex, sets manager to yes
+          System.out.println(username);
+
+      }while(offensesName < 2 && accepted != 1);
+
+      if(accepted == 0){
+        ruleLogs.info("Failed username login attempts. Thread is IP." + "\n");
       }
+
+      offensesName = 0;
+      accepted = 0;
+
+
+      while(offensesPassword < 2 && accepted != 1){
+
+         String pass = input.readUTF();
+
+         if (pass.equals("pass")){
+            accepted = 1;
+         }
+
+         output.writeInt(accepted);
+         output.flush();
+
+         offensesPassword++;
+
+      }
+      if (accepted == 0){
+        ruleLogs.info("Username: "  + uName + " Password attempts exceeded." + "\n");
+        //System.exit(-1);
+        sock.close();
+      }
+
+      offensesPassword = 0;
+
 
       // Make a random sequence of bytes to use as a challenge string.
       Random rand = new Random();
@@ -125,18 +197,7 @@ public class Server {
       byte[] sessionKey = new byte [ 16 ];
       rand.nextBytes( sessionKey );
 
-      // Find this user.  We don't need to synchronize here, sinc the set of users never
-      // changes.
-      UserRec rec = null;
-      for ( int i = 0; rec == null && i < userList.size(); i++ )
-        if ( userList.get( i ).name.equals( username ) ){
-          rec = userList.get( i );
-          //gets time stamp for when the user logs in
-          timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss")
-          .format(Calendar.getInstance().getTime());
-        }
-//Checks to see who is logged in and if alex, sets manager to yes
-        System.out.println(username);
+
 
 
       // Did we find a record for this user?
@@ -197,14 +258,19 @@ public class Server {
 // if report command
           } else if(cmd.equals("report") && ifManager == true){
             for(int i = 0; i < userList.size(); i++){
-              reply.append(userList.get(i).name + ": " + userList.get(i).status + " Time: " + timeStamp + "\n");
+              reply.append(userList.get(i).name + ": " + userList.get(i).status + "\n");
             }
             // if command is invalid
           } else{
             reply.append("invalid command! " + "\n");
+            rec.offenseCount += 2;
+            ruleLogs.info("Username: " + rec.name + " Permission violation." + "\n");
           }
 
-
+          if(rec.offenseCount >= 5){
+            sock.close();
+            System.exit(-1);
+          }
 
           // For now, just reply with a copy of the command.
 
@@ -222,6 +288,8 @@ public class Server {
       System.out.println( "IO Error: " + e );
     } catch( GeneralSecurityException e ){
       System.err.println( "Encryption error: " + e );
+      rec.offenseCount += 6;
+      ruleLogs.info("Username: " + rec.name + " Bad Key.\n");
     } finally {
       try {
         // Close the socket on the way out.
@@ -286,6 +354,13 @@ public class Server {
     Server server = new Server();
     // timeServerStarts = new SimpleDateFormat("yyyyMMdd_HHmmss")
     // .format(Calendar.getInstance().getTime());
+    try{
+      fileHandle = new FileHandler("logFile.txt", true);
+      ruleLogs.addHandler(fileHandle);
+    }
+    catch(SecurityException e){}
+    catch(IOException e){}
     server.run( args );
+
   }
 }

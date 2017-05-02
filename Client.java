@@ -72,11 +72,39 @@ public class Client {
       DataOutputStream output = new DataOutputStream( sock.getOutputStream() );
 
       // Get a username from the user and send it to the server.
-      Scanner scanner = new Scanner( System.in );
-      System.out.print( "Username: " );
-      String name = scanner.nextLine();
-      output.writeUTF( name );
-      output.flush();
+      int go = 0;
+      int count = 0;
+      String name;
+      String password;
+      Scanner scanner;
+
+      do{
+        scanner = new Scanner( System.in );
+        System.out.print( "Username: " );
+        name = scanner.nextLine();
+        output.writeUTF( name );
+        output.flush();
+
+        go = input.readInt();
+        System.out.println("Go is " + go);
+        count++;
+      } while(go != 1 && count < 2);
+
+      count = 0;
+      do{
+          go = 0;
+        scanner = new Scanner( System.in );
+        System.out.print( "Password: " );
+        password = scanner.nextLine();
+        output.writeUTF( password );
+        output.flush();
+
+        go = input.readInt();
+        System.out.println("Go is " + go);
+
+        count++;
+      } while(go != 1 && count < 2);
+
 
       // Try to read the user's private key.
       Scanner keyScanner = new Scanner( new File( name + ".txt" ) );
